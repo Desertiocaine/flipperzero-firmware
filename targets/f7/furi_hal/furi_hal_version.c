@@ -91,16 +91,14 @@ typedef struct {
 static FuriHalVersion furi_hal_version = {0};
 
 static void furi_hal_version_set_name(const char* name) {
-    if(name != NULL) {
-        strlcpy(furi_hal_version.name, name, FURI_HAL_VERSION_ARRAY_NAME_LENGTH);
-        snprintf(
-            furi_hal_version.device_name,
-            FURI_HAL_VERSION_DEVICE_NAME_LENGTH,
-            "xFlipper %s",
-            furi_hal_version.name);
-    } else {
-        strlcpy(furi_hal_version.device_name, "xFlipper", FURI_HAL_VERSION_DEVICE_NAME_LENGTH);
-    }
+    const char* custom_name = "Packwhacker";
+
+    strlcpy(furi_hal_version.name, custom_name, FURI_HAL_VERSION_ARRAY_NAME_LENGTH);
+    snprintf(
+        furi_hal_version.device_name,
+        FURI_HAL_VERSION_DEVICE_NAME_LENGTH,
+        "xFlipper %s",
+        custom_name);
 
     furi_hal_version.device_name[0] = AD_TYPE_COMPLETE_LOCAL_NAME;
 
